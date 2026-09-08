@@ -22,7 +22,7 @@ ascon-aead128 = { git = "https://github.com/RustCrypto/AEADs", rev = "677cf651ad
 # QPP-RNG-IoT lives in a sibling repository; pulled in as a dev-dependency
 # so the QPP-RNG + Ascon integration test can consume its reference RNG
 # without coupling the two workspaces together.
-qpp-rng-reference = { git = "https://github.com/QPP-IoT-Lib/QPP-RNG-IoT.git", branch = "main" }
+qpp-rng-reference = { git = "https://github.com/QPP-IoT-Lib/QPP-RNG-IoT.git", rev = "d08ea07273422867e53c8ba4eaed0d255751a00b" }
 
 # Internal crates, referenced by path so other members can depend on
 # them as ascon-iot = { workspace = true }.

@@ -13,3 +13,4 @@ ascon-aead128 = { workspace = true }
 
 [dev-dependencies]
 qpp-rng-reference = { workspace = true }
+serde_json = "1"
