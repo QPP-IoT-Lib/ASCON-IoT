@@ -46,7 +46,7 @@ pub type CryptoResult<T> = core::result::Result<T, AsconError>;
 
 /// Baseline NIST SP 800-232 Ascon-AEAD128 implementation.
 ///
-/// This deliberately wraps the reference RustCrypto implementation
+/// This deliberately wraps the pinned RustCrypto implementation
 /// without modifying the Ascon permutation, number of rounds,
 /// initialization constants, rate, tag or nonce size.
 ///
