@@ -1,0 +1,34 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/ascon-iot",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.97.1"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/QPP-IoT-Lib/ASCON-IoT"
+publish = false # flip on a per-crate basis once something is ready to ship
+
+# Centralized dependency versions. Member crates opt in with
+# dep = { workspace = true } so every crate stays on the same version
+# without repeating it everywhere.
+[workspace.dependencies]
+rand_core = { version = "0.10.1", default-features = false }
+ascon-aead128 = { git = "https://github.com/RustCrypto/AEADs", rev = "677cf651adcf22321d57c46e52f67afc36d36014", default-features = false }
+
+# QPP-RNG-IoT lives in a sibling repository; pulled in as a dev-dependency
+# so the QPP-RNG + Ascon integration test can consume its reference RNG
+# without coupling the two workspaces together.
+qpp-rng-reference = { git = "https://github.com/QPP-IoT-Lib/QPP-RNG-IoT.git", branch = "main" }
+
+# Internal crates, referenced by path so other members can depend on
+# them as ascon-iot = { workspace = true }.
+ascon-iot = { path = "crates/ascon-iot" }
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
